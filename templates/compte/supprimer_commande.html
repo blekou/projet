@@ -1,0 +1,28 @@
+{% extends 'compte/base.html'%}
+
+{% block 'title'%}
+supprimer_commnade
+{% endblock 'title'%}
+
+{% block content%}
+<br>
+    <div class="">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-body">
+                    <div>
+                        <h4> être vous sûre de supprimer la commande <strong class="btn btn-info">{{item}}</strong> </h4>
+                        <form action="" method="POST">
+                            {%csrf_token%}
+                            <a class="btn btn-warning" href="{% url 'home' %}"> Annuler</a>
+                            
+                            <input class="btn btn-danger" type="submit" name="confirm">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content%}

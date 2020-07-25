@@ -1,0 +1,67 @@
+{% extends 'compte/base.html'%}
+
+{% block 'title'%}
+Dashboard
+{% endblock 'title'%}
+
+{% block content%}
+<div>
+    <h1 class="text-center">Bienvenus sur notre plateforme de Gestions</h1>
+</div>
+<br><br>
+
+{% include 'compte/status.html' %}
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>CLIENTS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Créer un client</a>
+			<table class="table table-sm">
+				<tr>	
+					<th>Clients</th>
+					<th>Téléphone</th>
+				</tr>
+			{%for c in client%}
+				<tr>
+					<td><a class="btn btn-sm btn-warning" href="{% url 'client' c.id %}">voir</a></td>
+					<td>{{c.nom}}</td>
+					<td>{{c.telephone}}</td>
+				</tr>
+			{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>5 DERNIÈRES COMMANDES</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th>Produits</th>
+					<th>Date de la commande</th>
+					<th>Status</th>
+					<th>Modifier</th>
+					<th>Retirer</th>
+				</tr>
+				{% for com in commande%}
+					<tr>
+						<td>{{com.produit}}</td>
+						<td>{{com.date_add}}</td>
+						<td>{{com.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'modifier_commande' com.id%}">Modifier</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'supprimer_commande' com.id %}">Retirer</a></td>	
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock content%}

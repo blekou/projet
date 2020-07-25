@@ -1,0 +1,37 @@
+{% extends 'compte/base.html'%}
+
+{% block 'title'%}
+produit
+{% endblock 'title'%}
+
+{% block content%}
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Produits</h5>
+                </div>
+                <br>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Produits</th>
+							<th>Categories</th>
+							<th>Prix</th>
+							<th>Images</th>
+						</tr>
+
+					{% for i in produit %}
+						<tr>
+							<td>{{i.nom}}</td>
+							<td>{{i.categorie}}</td>
+							<td>{{i.prix}}</td>
+						</tr>							
+					{% endfor %}
+					
+					</table>
+			</div>
+			
+		</div>
+{% endblock content%}

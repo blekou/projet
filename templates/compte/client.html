@@ -1,0 +1,82 @@
+{% extends 'compte/base.html'%}
+
+{% block 'title'%}
+client
+{% endblock 'title'%}
+
+{% block content%}
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Clients</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Modifier Client</a>
+			<a class="btn btn-success  btn-md btn-block" href="{% url 'cree_commande' client.id %}">Passer la commande</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Informations du client</h5>
+			<hr>
+			<p>pseudo:<strong style="font-size: 25px;">{{client.nom}}</strong></p>
+			<p>Email: <strong style="font-size: 18px;">{{client.email}}</strong></p>
+			<p>numéro de téléphone: {{client.telephone}} </p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Commandes</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{total_commande}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+				{{myfilter.form}}
+			<button class="btn btn-primary" type="submit">Recherche</button>
+			
+		  </form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Produits</th>
+					<th>Categories</th>
+					<th>Date de commande</th>
+					<th>Status</th>
+					<th>Modifier</th>
+					<th>Retirer</th>
+				</tr>
+				{% for com in commandes %}
+				<tr>
+					<td>{{com.produit}}</td>
+					<td>{{com.produit.categorie}}</td>
+					<td>{{com.date_add}}</td>
+					<td>{{com.status}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'modifier_commande' com.id%}">Modifier</a></td>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'supprimer_commande' com.id %}">Retirer</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content%}

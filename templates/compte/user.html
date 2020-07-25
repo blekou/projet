@@ -1,0 +1,36 @@
+{% extends 'compte/base.html'%}
+
+{% block 'title'%}
+user
+{% endblock 'title'%}
+
+{% block content%}
+<br>
+{% include 'compte/status.html' %}
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Produits</th>
+					<th>Categories</th>
+					<th>Date de commande</th>
+					<th>Status</th>
+					
+				</tr>
+				{% for com in commandes %}
+				<tr>
+					<td>{{com.produit}}</td>
+					<td>{{com.produit.categorie}}</td>
+					<td>{{com.date_add}}</td>
+					<td>{{com.status}}</td>
+					
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content%}

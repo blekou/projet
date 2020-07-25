@@ -1,0 +1,50 @@
+{% load static %}
+ 
+ <style>
+   .mgs-hello{
+     color:#fff;
+     font-size:18px;
+   }
+
+   .user{
+    color:yellow;
+   }
+
+   .hello a{
+     text-decoration: none;
+     color:#fff;
+     margin-left:20px;
+     font-size:18px;
+     
+   }
+ </style>
+
+ <!--menu-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">Gestion</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home'%}">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'produit'%}">Produits</a>
+            </li> 
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'profile'%}">Profile</a>
+            </li>
+             
+        </div>
+       
+       
+        <span class="mgs-hello">Hello, <strong class="user">{{request.user}}</strong></span>
+        <span  class="hello"><a href="{% url 'register_client' %}"> S'inscris</a></span>
+        <span  class="hello"><a href="{% url 'login_client' %}"> Connexion</a></span>
+        <span  class="hello"><a href="{% url 'login_client' %}"> Deconnexion</a></span>
+      </nav>
+
+     
